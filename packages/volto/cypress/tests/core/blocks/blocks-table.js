@@ -124,4 +124,13 @@ describe('Table Block Tests', () => {
       '.celled.fixed.table tbody tr:first-child() td:nth-child(2)',
     ).contains('column 2 / row 2');
   });
+
+  it('No border in input', () => {
+    cy.addNewBlock('table');
+    cy.get('.block-editor-slateTable [role=textbox]').should('be.visible');
+    cy.get('.block-editor-slateTable [role=textbox]')
+      .first()
+      .click()
+      .should('have.css', 'outline', 'rgb(135, 143, 147) none 0px');
+  });
 });
